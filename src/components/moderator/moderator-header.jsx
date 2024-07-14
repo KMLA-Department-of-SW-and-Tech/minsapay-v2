@@ -58,7 +58,7 @@ const ModeratorHeader = () => {
   const onLogoClick = (e) => {
     // logo 누르면 홈으로 navigate
     e.preventDefault();
-    navigate("/cpu-home");
+    navigate("/");
   };
   const onLogIconClick = async (e) => {
     e.preventDefault();
