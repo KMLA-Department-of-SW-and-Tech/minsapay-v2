@@ -50,6 +50,9 @@ const LoginBox = styled.div`
   align-items: center;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  @media only screen and (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 const ImgDiv = styled.div`
@@ -102,13 +105,18 @@ const Input = styled.input`
     border-radius: 25px;
     background-color: ${MINSAPAY_BLUE};
     color: white;
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: bold;
     cursor: pointer;
     transition: opacity 0.2s;
     &:hover {
       opacity: 0.8;
       box-shadow: 0px 2px 2px 0px ${BUTTON_SHADOW};
+    }
+    @media only screen and (max-width: 768px) {
+      width: 60%;
+      font-size: 0.8em;
+      padding: 8px;
     }
   }
 `;
