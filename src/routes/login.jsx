@@ -47,7 +47,7 @@ const Wrapper = styled.div`
 const LoginBox = styled.div`
   width: 100%;
   background-color: white;
-  border-radius: 2vh;
+  border-radius: 4vh;
   display: flex;
   flex-direction: column;
   align-items: center;
