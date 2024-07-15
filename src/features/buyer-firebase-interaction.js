@@ -30,22 +30,16 @@ const buyerFirebase = {
       // 부스 목록의 kiosk authentication number 비교
       const document = teams.docs[i].data();
       if (submitNumber === document.kiosk_authentication_number) {
-        // if (document.linked_buyer !== "") {
-        //   alert("이미 누군가가 접속했습니다.");
-        // } else {
-        //   foundMatch = true;
-        //   document.linked_buyer = this.userDoc.id;
-        //   await setDoc(doc(database, "Teams", teams.docs[i].id), document);
-        //   const tmp = this.userDocData;
-        //   tmp.is_connected = true;
-        //   await setDoc(this.userDocRef, tmp);
-        // }
+      if (document.linked_buyer !== "") {
+        alert("이미 누군가가 접속했습니다.");
+      } else {
         foundMatch = true;
         document.linked_buyer = this.userDoc.id;
         await setDoc(doc(database, "Teams", teams.docs[i].id), document);
         const tmp = this.userDocData;
         tmp.is_connected = true;
         await setDoc(this.userDocRef, tmp);
+      }
         break;
       }
     }
