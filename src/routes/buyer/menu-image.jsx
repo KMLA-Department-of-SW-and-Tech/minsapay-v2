@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   height: 100vh;
   width: 500px;
 `;
-ImageWrapper = styled.div`
+const ImageWrapper = styled.div`
   width: 100%;
   height: 100vh;
   &::-webkit-scrollbar {
