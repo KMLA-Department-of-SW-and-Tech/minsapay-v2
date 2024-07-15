@@ -9,10 +9,10 @@ import SettingRef from "../../images/Setting.svg";
 // CPU의 모든 화면에 공통으로 들어가는 header으로, home으로 가는, logout하는 버튼을 가지고 있다.
 
 const HeaderDiv = styled.div`
-  width: 95vw;
+  width: 95%;
   margin: 0 0;
   height: 10vh;
-  padding: 0 2.5vw;
+  padding: 0 2.5%;
   background-color: white;
   display: flex;
   flex-direction: row;

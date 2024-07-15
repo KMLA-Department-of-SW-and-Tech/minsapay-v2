@@ -10,7 +10,7 @@ import { SearchElement } from "../../components/moderator/search-element";
 import Loading from "../../components/loading";
 
 const Wrapper = styled.div`
-  width: flex;
+  width: 100vw;
   height: flex;
   display: flex;
   flex-direction: column;
