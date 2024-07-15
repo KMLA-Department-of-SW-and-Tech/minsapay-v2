@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
-
-
 import MenuImageRef from "../../images/MenuImage.png";
+import styled from "styled-components";
 
 const CloseButton = styled.button`
   position: absolute;
