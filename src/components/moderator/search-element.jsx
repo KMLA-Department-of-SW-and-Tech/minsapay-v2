@@ -10,7 +10,7 @@ const Wrapper = styled.span`
   border: 2px solid ${BORDER_GRAY};
   border-radius: 15px;
   padding: 0.3rem;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
   background-color: #f9f9f9;
 
   height: 2.5rem; // 고정된 높이 추가
