@@ -30,7 +30,6 @@ const OuterWrapper = styled.div`
   }
 `;
 
-// figma 제대로 된 치수 필요
 const Wrapper = styled.div`
   width: 50vh;
   height: 100vh;
@@ -38,15 +37,22 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
 `;
+
 const LoginBox = styled.div`
   height: 70vh;
   @media only screen and (max-width: 1000px) {
-    height: calc(45vh);
+    height: 45vh;
   }
   width: 100%;
   @media only screen and (max-width: 1000px) {
-    width: calc(35vh);
+    width: 35vh;
   }
   background-color: white;
   border-radius: 5vh;
@@ -54,9 +60,13 @@ const LoginBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 0;
+  @media only screen and (max-width: 768px) {
+    padding: 10px 0;
+  }
 `;
+
 const TitleDiv = styled.div`
-  margin-top: 10%;
   width: 100%;
   height: 10%;
   display: flex;
@@ -66,6 +76,9 @@ const TitleDiv = styled.div`
   margin-bottom: 40px;
   position: relative;
   z-index: 1;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const Title = styled.span`
@@ -74,7 +87,9 @@ const Title = styled.span`
     font-size: calc(0.3vw + 1.5em);
   }
   font-family: ${MINSAPAY_TITLE};
+  margin-top: 20px;
 `;
+
 const ImgDiv = styled.div`
   height: 140%;
   display: flex;
@@ -83,23 +98,38 @@ const ImgDiv = styled.div`
   align-items: center;
   margin-bottom: 10%;
   margin-top: 10%;
+  @media only screen and (max-width: 768px) {
+    height: auto;
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
 `;
+
 const Image = styled.img`
   height: 220%;
   margin-top: 10%;
+  @media only screen and (max-width: 768px) {
+    height: 100px;
+    margin-top: 0;
+  }
 `;
+
 const Form = styled.form`
   height: 50%;
   padding-top: 20%;
   margin-bottom: 1.6%;
-  /*   margin-right: 40px;
-  margin-left: 40px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   font-family: ${MINSAPAY_FONT};
+  @media only screen and (max-width: 768px) {
+    padding-top: 10%;
+    height: auto;
+    margin-bottom: 0;
+  }
 `;
+
 const Input = styled.input`
   padding: 1.3% 0px;
   border: none;
@@ -119,22 +149,18 @@ const Input = styled.input`
     border-bottom: 3px solid #444;
   }
   &[name="password"] {
-    // BMDOWYEON 폰트는 비밀번호를 지원하지 않기에 비밀번호 입력은 본래 글씨체 적용
     font-family: sans-serif;
     &::placeholder {
       font-family: ${MINSAPAY_FONT};
     }
   }
   &[type="submit"] {
-    // 로그인 버튼
     margin-top: 7%;
     margin-bottom: 0px;
-
     width: 30%;
     height: 17%;
     border-radius: 50px;
     border-bottom: 0px;
-
     background-color: ${MINSAPAY_BLUE};
     color: white;
     font-size: 0.7em;
@@ -143,7 +169,6 @@ const Input = styled.input`
     }
     font-weight: normal;
     font-family: ${MINSAPAY_FONT};
-
     &:hover {
       cursor: pointer;
       opacity: 0.8;
@@ -151,8 +176,8 @@ const Input = styled.input`
     }
   }
 `;
+
 const Error = styled.span`
-  // 로그인 에러 모두 띄우는 거
   font-size: 1.3vh;
   @media only screen and (max-width: 1000px) {
     font-size: calc(0.58em);
@@ -164,6 +189,7 @@ const Error = styled.span`
     margin-bottom: 5%;
   }
 `;
+
 const PicSource = styled.span`
   font-size: 2vh;
   @media only screen and (max-width: 1000px) {
@@ -196,10 +222,8 @@ export default function Login() {
     const successfulSignIn = await loginUtils.signIn(userID, password);
     setIsLoading(false);
     if (successfulSignIn) {
-      // 로그인에 성공하면
-      navigate("/"); // 홈으로
-    } else if (loginUtils.error === "")
-      setError("이유불명 로그인 에러"); // signIn에서 잡지 못하는 에러
+      navigate("/");
+    } else if (loginUtils.error === "") setError("이유불명 로그인 에러");
     else setError(loginUtils.error);
   };
   const onLogoImageDoubleClick = async () => {
@@ -221,8 +245,7 @@ export default function Login() {
             <ImgDiv>
               <Image src={Logo} onDoubleClick={onLogoImageDoubleClick} />
             </ImgDiv>
-
-            <Title>Login </Title>
+            <Title>Login</Title>
           </TitleDiv>
           <Form onSubmit={onSubmit}>
             <Input
