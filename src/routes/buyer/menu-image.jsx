@@ -8,7 +8,8 @@ const Wrapper = styled.div`
 
 `;
 ImageWrapper = styled.div`
-  width: 100%; 
+  width: 100%;
+  height: 100vh;
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
