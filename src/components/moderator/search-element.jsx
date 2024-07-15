@@ -15,7 +15,7 @@ const Wrapper = styled.span`
 
   height: 2.5rem; // 고정된 높이 추가
 
-  margin-top: 17vh;
+  margin-top: 15vh;
 `;
 
 const Text = styled.span`
