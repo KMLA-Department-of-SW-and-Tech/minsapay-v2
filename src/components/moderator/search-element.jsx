@@ -14,6 +14,8 @@ const Wrapper = styled.span`
   background-color: #f9f9f9;
 
   height: 2.5rem; // 고정된 높이 추가
+
+  margin-top: 17vh;
 `;
 
 const Text = styled.span`
@@ -48,7 +50,6 @@ const StyledInput = styled.input`
   outline: none;
   box-sizing: border-box;
   height: 100%; // Wrapper와 같은 높이로 설정
-  margin-top: 17vh;
 `;
 
 export function SearchElement({ searchFunc, inputLabel }) {
