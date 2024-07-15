@@ -166,7 +166,6 @@ export default function DeveloperHome() {
       <SubmitDatabaseInfoButton onClick={uploadable ? onSubmitDataClick : null}>
         {uploadable ? "Submit Database Info" : "Uploading"}
       </SubmitDatabaseInfoButton>
-      <>test</>
       <Logout onClick={onLogoutClick}>Log Out</Logout>
     </Wrapper>
   );
