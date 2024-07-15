@@ -3,7 +3,7 @@ import MenuImageRef from "../../images/MenuImage.png";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: flex;
   width: 500px;
 `;
 const ImageWrapper = styled.div`
