@@ -15,13 +15,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: hidden; /* Hide vertical scrollbar */
 `;
 
 const BodyDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: start;
-  width: 100vw;
+  width: 100%;
 `;
 
 export default function ModeratorHome() {
