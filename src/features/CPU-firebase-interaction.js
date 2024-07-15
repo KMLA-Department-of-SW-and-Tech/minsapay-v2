@@ -27,6 +27,7 @@ const CPUFirebase = {
     this.userDocRef = doc(database, "Teams", loginUtils.getUserID());
     this.userDoc = await getDoc(this.userDocRef);
     this.userDocData = this.userDoc.data();
+    console.log(this.userDocData)
     this.menuList = JSON.parse(this.userDocData.menu_list);
     this.orderHistory = JSON.parse(this.userDocData.order_history);
   },
