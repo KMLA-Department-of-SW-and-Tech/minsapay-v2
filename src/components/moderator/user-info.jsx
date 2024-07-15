@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   margin: 20px; /* 마진 추가 */
+  position: fixed;
+  top: 15vh;
+  left: 50vw;
+  z-index: 1000; /* 다른 요소 위에 표시되도록 z-index 설정 */
 `;
 
 const TextWrapper = styled.div`
