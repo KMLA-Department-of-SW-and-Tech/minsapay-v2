@@ -16,9 +16,11 @@ import Loading from "../components/loading";
 
 const OuterWrapper = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -31,122 +33,61 @@ const OuterWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 50vh;
-  height: 100vh;
+  width: 90%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    height: 100%;
-    justify-content: flex-start;
-    padding-top: 20px;
-  }
 `;
 
 const LoginBox = styled.div`
-  height: 70vh;
-  @media only screen and (max-width: 1000px) {
-    height: 45vh;
-  }
   width: 100%;
-  @media only screen and (max-width: 1000px) {
-    width: 35vh;
-  }
   background-color: white;
-  border-radius: 5vh;
+  border-radius: 2vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  @media only screen and (max-width: 768px) {
-    padding: 10px 0;
-  }
-`;
-
-const TitleDiv = styled.div`
-  width: 100%;
-  height: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 1;
-  @media only screen and (max-width: 768px) {
-    margin-bottom: 20px;
-  }
-`;
-
-const Title = styled.span`
-  font-size: 2vw;
-  @media only screen and (max-width: 1100px) {
-    font-size: calc(0.3vw + 1.5em);
-  }
-  font-family: ${MINSAPAY_TITLE};
-  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 const ImgDiv = styled.div`
-  height: 140%;
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 10%;
-  margin-top: 10%;
-  @media only screen and (max-width: 768px) {
-    height: auto;
-    margin-bottom: 5%;
-    margin-top: 5%;
-  }
+  justify-content: center;
+  margin-bottom: 20px;
 `;
 
 const Image = styled.img`
-  height: 220%;
-  margin-top: 10%;
-  @media only screen and (max-width: 768px) {
-    height: 100px;
-    margin-top: 0;
-  }
+  width: 60%;
+`;
+
+const Title = styled.span`
+  font-size: 1.5em;
+  font-family: ${MINSAPAY_TITLE};
+  margin-bottom: 20px;
 `;
 
 const Form = styled.form`
-  height: 50%;
-  padding-top: 20%;
-  margin-bottom: 1.6%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   font-family: ${MINSAPAY_FONT};
-  @media only screen and (max-width: 768px) {
-    padding-top: 10%;
-    height: auto;
-    margin-bottom: 0;
-  }
 `;
 
 const Input = styled.input`
-  padding: 1.3% 0px;
+  padding: 10px;
   border: none;
   width: 80%;
-  font-size: 1vh;
-  @media only screen and (max-width: 700px) {
-    font-size: 1.5vh;
-  }
+  font-size: 1em;
   outline: none;
-  border-bottom: 3px solid ${BORDER_GRAY};
-  margin-top: 7%;
+  border-bottom: 2px solid ${BORDER_GRAY};
+  margin-top: 10px;
   font-family: ${MINSAPAY_FONT};
-  @media only screen and (max-width: 2000px) {
-    font-size: 0.9em;
-  }
   &:focus {
-    border-bottom: 3px solid #444;
+    border-bottom: 2px solid #444;
   }
   &[name="password"] {
     font-family: sans-serif;
@@ -155,22 +96,17 @@ const Input = styled.input`
     }
   }
   &[type="submit"] {
-    margin-top: 7%;
-    margin-bottom: 0px;
-    width: 30%;
-    height: 17%;
-    border-radius: 50px;
-    border-bottom: 0px;
+    margin-top: 20px;
+    width: 50%;
+    padding: 10px;
+    border-radius: 25px;
     background-color: ${MINSAPAY_BLUE};
     color: white;
-    font-size: 0.7em;
-    @media only screen and (max-width: 700px) {
-      font-size: calc(0.07vw + 0.78em);
-    }
-    font-weight: normal;
-    font-family: ${MINSAPAY_FONT};
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
     &:hover {
-      cursor: pointer;
       opacity: 0.8;
       box-shadow: 0px 2px 2px 0px ${BUTTON_SHADOW};
     }
@@ -178,34 +114,19 @@ const Input = styled.input`
 `;
 
 const Error = styled.span`
-  font-size: 1.3vh;
-  @media only screen and (max-width: 1000px) {
-    font-size: calc(0.58em);
-  }
+  font-size: 1em;
   color: tomato;
   font-family: ${MINSAPAY_FONT};
-  margin-bottom: 7%;
-  @media only screen and (max-width: 1000px) {
-    margin-bottom: 5%;
-  }
+  margin-top: 10px;
 `;
 
 const PicSource = styled.span`
-  font-size: 2vh;
-  @media only screen and (max-width: 1000px) {
-    font-size: 1.5vh;
-  }
+  font-size: 1em;
   color: aliceblue;
   font-family: ${MINSAPAY_FONT};
-  position: fixed;
-  bottom: 1%;
-  @media only screen and (max-width: 1000px) {
-    bottom: 3%;
-  }
-  left: 1%;
-  @media only screen and (max-width: 1000px) {
-    left: 3%;
-  }
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 `;
 
 export default function Login() {
@@ -241,12 +162,10 @@ export default function Login() {
     <OuterWrapper>
       <Wrapper>
         <LoginBox>
-          <TitleDiv>
-            <ImgDiv>
-              <Image src={Logo} onDoubleClick={onLogoImageDoubleClick} />
-            </ImgDiv>
-            <Title>Login</Title>
-          </TitleDiv>
+          <ImgDiv>
+            <Image src={Logo} onDoubleClick={onLogoImageDoubleClick} />
+          </ImgDiv>
+          <Title>Login</Title>
           <Form onSubmit={onSubmit}>
             <Input
               onChange={(e) => setUserID(e.target.value)}
@@ -266,7 +185,7 @@ export default function Login() {
             />
             <Input type="submit" value={"로그인"} />
           </Form>
-          {error !== "" ? <Error>{error}</Error> : null}
+          {error && <Error>{error}</Error>}
         </LoginBox>
       </Wrapper>
       <PicSource>
