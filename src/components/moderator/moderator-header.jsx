@@ -39,8 +39,8 @@ const IconWrapper = styled.div`
   width: 50%;
   height: 100%;
 `;
-const LogOutIcon = styled.img`
-  height: 70%;
+const SettingIcon = styled.img`
+  height: 60%;
   /* margin-right: 11px; */
   aspect-ratio: 1;
   /* margin-left: auto; */
@@ -69,12 +69,10 @@ const ModeratorHeader = ({logButtonEnable}) => {
     e.preventDefault();
     navigate("/log");
   };
-  const onLogOutIconClick = async (e) => {
-    // logout 누르면 confirm 띄우고 로그아웃 후 home으로 navigate --> 저절로 logout화면으로 protected routes를 통해 연결
+  const onSettingClick = async (e) => {
+    // logo 누르면 설정으로 navigate
     e.preventDefault();
-    if (!confirm("로그아웃 하시겠습니까?")) return;
-    await loginUtils.signOut();
-    navigate("/login");
+    navigate("/login-setting");
   };
   const onLogoHover = (e) => {
     const logoImage = e.target;
@@ -95,7 +93,7 @@ const ModeratorHeader = ({logButtonEnable}) => {
       />
       <IconWrapper>
         {logButtonEnable ? <LogIcon onClick={onLogIconClick} src={LogIconRef} /> : null}
-        <LogOutIcon onClick={onLogOutIconClick} src={LogOutRef} />
+        <SettingIcon onClick={onSettingClick} src={SettingRef} />
       </IconWrapper>
     </HeaderDiv>
   );

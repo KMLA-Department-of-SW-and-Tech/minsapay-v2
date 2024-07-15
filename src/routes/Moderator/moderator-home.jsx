@@ -86,16 +86,6 @@ export default function ModeratorHome() {
     const init = async () => {
       setIsLoading(true);
       await moderatorFirebase.init();
-      // setUserElementList(
-      //   moderatorFirebase.usersList.map((user) => {
-      //     return (
-      //       <UserElement
-      //         username={user.data().username}
-      //         key={user.data().username}
-      //       />
-      //     );
-      //   }),
-      // );
       changeUserElementList();
       setIsLoading(false);
     };
