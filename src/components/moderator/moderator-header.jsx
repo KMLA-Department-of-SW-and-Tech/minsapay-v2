@@ -18,6 +18,11 @@ const HeaderDiv = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* 다른 요소 위에 표시되도록 z-index 설정 */
 `;
 const Logo = styled.img`
   height: 90%;
