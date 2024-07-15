@@ -239,10 +239,10 @@ const developerFirebase = {
     return resultData;
   },
   async submitData(subData) {
-    //const data1 = await this.submitStudentData(subData.Students);
+    const data1 = await this.submitStudentData(subData.Students);
     //const data2 = await this.submitTeamData(subData.Teams);
     return {
-      Students: {},
+      Students: data1,
       Teams: {},
     };
   },
