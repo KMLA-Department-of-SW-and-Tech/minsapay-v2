@@ -16,7 +16,7 @@ ImageWrapper = styled.div`
   scrollbar-width: none; /* Firefox */
 `;
 
-const MenuImage = styled.img`
+const MenuImg = styled.img`
   width: 100%;
 `;
 
@@ -44,7 +44,7 @@ export default function MenuImage() {
   return (
     <Wrapper>
       <ImageWrapper>
-        <MenuImage src={MenuImageRef} />
+        <MenuImg src={MenuImageRef} />
       </ImageWrapper>
       <CloseButton onClick={onCloseButtonClick}>X</CloseButton>
     </Wrapper>
