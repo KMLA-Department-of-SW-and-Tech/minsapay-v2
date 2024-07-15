@@ -30,6 +30,10 @@ const BodyDiv = styled.div`
   margin-top: 3vh;
 `;
 
+const SpaceDiv = styled.div`
+  height: 10vh;
+`; 
+
 export default function ModeratorHome() {
   const [userElementList, setUserElementList] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -126,6 +130,7 @@ export default function ModeratorHome() {
     <Wrapper>
       <ModeratorHeader logButtonEnable={true} />
       {/* <SearchElement searchFunc={setIdFilter} inputLabel={"학번으로 검색"} /> */}
+      <SpaceDiv />
       <SearchElement searchFunc={setNameFilter} inputLabel={"이름으로 검색"} />
       <BodyDiv>
         <SingleList dataList={userElementList} />
