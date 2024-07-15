@@ -128,7 +128,7 @@ export default function ModeratorHome() {
     <Loading />
   ) : (
     <Wrapper>
-      <ModeratorHeader />
+      <ModeratorHeader logButtonEnable={true} />
       {/* <SearchElement searchFunc={setIdFilter} inputLabel={"학번으로 검색"} /> */}
       <SearchElement searchFunc={setNameFilter} inputLabel={"이름으로 검색"} />
       <BodyDiv>

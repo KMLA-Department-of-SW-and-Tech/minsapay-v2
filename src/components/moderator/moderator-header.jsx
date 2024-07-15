@@ -58,7 +58,7 @@ const LogIcon = styled.img`
   }
 `;
 
-const ModeratorHeader = () => {
+const ModeratorHeader = ({logButtonEnable}) => {
   const navigate = useNavigate();
   const onLogoClick = (e) => {
     // logo 누르면 홈으로 navigate
@@ -94,7 +94,7 @@ const ModeratorHeader = () => {
         src={LogoRef}
       />
       <IconWrapper>
-        <LogIcon onClick={onLogIconClick} src={LogIconRef} />
+        {logButtonEnable ? <LogIcon onClick={onLogIconClick} src={LogIconRef} /> : null}
         <LogOutIcon onClick={onLogOutIconClick} src={LogOutRef} />
       </IconWrapper>
     </HeaderDiv>
