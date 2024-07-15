@@ -10,7 +10,7 @@ import SettingRef from "../../images/Setting.svg";
 
 const HeaderDiv = styled.div`
   width: 95%;
-  margin: 0 auto;
+  margin: 0 0;
   height: 10vh;
   padding: 0 2.5%;
   background-color: white;
@@ -84,7 +84,7 @@ const ModeratorHeader = ({logButtonEnable}) => {
   }; // logo에 hover하면 이미지가 바뀌도록
 
   return (
-    <HeaderDiv style={{padding: `${logButtonEnable ? "0 2%" : "0 2.5%"}`}}>
+    <HeaderDiv>
       <Logo
         onClick={onLogoClick}
         onMouseOver={onLogoHover}
