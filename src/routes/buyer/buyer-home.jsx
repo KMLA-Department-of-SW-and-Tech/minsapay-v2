@@ -52,7 +52,7 @@ const MenuContainer = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: url(${MenuImageRef}) center/cover no-repeat;
   display: ${(props) => props.showmenu};
 `;
