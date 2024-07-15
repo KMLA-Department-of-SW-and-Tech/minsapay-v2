@@ -25,6 +25,7 @@ const BodyDiv = styled.div`
   flex-direction: row;
   align-items: start;
   width: 100%;
+  margin-top: 25vh;
 `;
 
 export default function ModeratorHome() {
