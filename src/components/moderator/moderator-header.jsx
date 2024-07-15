@@ -84,7 +84,7 @@ const ModeratorHeader = ({logButtonEnable}) => {
   }; // logo에 hover하면 이미지가 바뀌도록
 
   return (
-    <HeaderDiv>
+    <HeaderDiv style={{width: `${logButtonEnable ? "90%" : "95%"}`}}>
       <Logo
         onClick={onLogoClick}
         onMouseOver={onLogoHover}
