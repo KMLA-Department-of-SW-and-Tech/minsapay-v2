@@ -131,7 +131,7 @@ const Input = styled.input`
 `;
 
 const Error = styled.span`
-  font-size: 1em;
+  font-size: 0.5em;
   color: tomato;
   font-family: ${MINSAPAY_FONT};
   margin-top: 10px;
