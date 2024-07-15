@@ -3,13 +3,20 @@ import MenuImageRef from "../../images/MenuImage.png";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 500px;
   @media only screen and (max-width: 768px) {
     width: 100vw;
   }
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 `;
-
+const ImageWrapper = styled.img`
+  width: 100%;
+`;
 
 const CloseButton = styled.button`
   position: absolute;
@@ -33,9 +40,8 @@ export default function MenuImage() {
   }
 
   return (
-    <Wrapper style={{backgroundImage: `url(${MenuImageRef})`}}>
-
-
+    <Wrapper>
+      <ImageWrapper src={MenuImageRef}/>
       <CloseButton onClick={onCloseButtonClick}>X</CloseButton>
     </Wrapper>
   );
