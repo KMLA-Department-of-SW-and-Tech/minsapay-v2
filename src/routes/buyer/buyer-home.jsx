@@ -9,7 +9,6 @@ import { BuyerHeader } from "../../components/buyer/buyer-header";
 import PayIconRef from "../../images/go-to-buyer-payment.svg";
 import MenuIconRef from "../../images/LogIcon.svg"; // 메뉴 아이콘 이미지 경로 추가
 import Loading from "../../components/loading";
-import MenuImageRef from "../../images/MenuImage.png";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -47,7 +46,7 @@ const MenuIcon = styled.img`
   }
 `;
 
-const MenuContainer = styled.div`
+/* const MenuContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -55,19 +54,7 @@ const MenuContainer = styled.div`
   height: 100%;
   background: url(${MenuImageRef}) center/cover no-repeat;
   display: ${(props) => props.showmenu};
-`;
-
-const CloseButton = styled.button`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #272424;
-  cursor: pointer;
-  font-family: sans-serif;
-`;
+`; */
 
 const OrderListContainer = styled.div`
   flex: 1;
@@ -80,8 +67,10 @@ export default function BuyerHome() {
   const [balance, setBalance] = useState(0);
   const [orderList, setOrderList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [showmenu, setShowmenu] = useState("none"); // 메뉴판 표시 상태 추가
-
+  /* const [showmenu, setShowmenu] = useState("none"); // 메뉴판 표시 상태 추가 */
+  const onMenuIconClick = () => {
+    navigate("/buyer-home/menu-image")
+  }
   useEffect(() => {
     let unsubscribe = null;
     const init = async () => {
@@ -150,13 +139,13 @@ export default function BuyerHome() {
               src={PayIconRef}
             />
             <MenuIcon
-              onClick={() => setShowmenu("block")}
+              onClick={onMenuIconClick}
               src={MenuIconRef} // 메뉴 아이콘 이미지 추가
             />
           </PayIconWrapper>
-          <MenuContainer showmenu={showmenu}>
+          {/* <MenuContainer showmenu={showmenu}>
             <CloseButton onClick={() => setShowmenu("none")}>X</CloseButton>
-          </MenuContainer>
+          </MenuContainer> */}
         </>
       )}
     </Wrapper>

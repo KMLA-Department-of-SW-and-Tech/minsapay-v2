@@ -30,6 +30,7 @@ import LogHome from "./routes/log/log-home.jsx";
 import AddSeller from "./routes/CPU/add-seller.jsx";
 
 import ChangePassword from "./routes/login-setting.jsx";
+import MenuImage from "./routes/buyer/menu-image.jsx";
 
 const router = createBrowserRouter([
   // 루팅
@@ -58,6 +59,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedBuyer>
         <BuyerHome />
+      </ProtectedBuyer>
+    ),
+  },
+  {
+    path: "/buyer-home/menu-image", // 개발자용
+    element: (
+      <ProtectedBuyer>
+        <MenuImage />
       </ProtectedBuyer>
     ),
   },
