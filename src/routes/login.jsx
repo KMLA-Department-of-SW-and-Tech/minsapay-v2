@@ -39,10 +39,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const LoginBox = styled.div`
-  width: 90%;
+  width: 100%;
   background-color: white;
   border-radius: 2vh;
   display: flex;
@@ -50,6 +53,9 @@ const LoginBox = styled.div`
   align-items: center;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  @media only screen and (max-width: 768px) {
+    padding: 15px;
+  }
 `;
 
 const ImgDiv = styled.div`
@@ -61,12 +67,18 @@ const ImgDiv = styled.div`
 
 const Image = styled.img`
   width: 60%;
+  @media only screen and (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 const Title = styled.span`
   font-size: 1.5em;
   font-family: ${MINSAPAY_TITLE};
   margin-bottom: 20px;
+  @media only screen and (max-width: 768px) {
+    font-size: 1.2em;
+  }
 `;
 
 const Form = styled.form`
@@ -97,7 +109,7 @@ const Input = styled.input`
   }
   &[type="submit"] {
     margin-top: 20px;
-    width: 40%;
+    width: 50%;
     padding: 10px;
     border-radius: 25px;
     background-color: ${MINSAPAY_BLUE};
@@ -109,6 +121,11 @@ const Input = styled.input`
     &:hover {
       opacity: 0.8;
       box-shadow: 0px 2px 2px 0px ${BUTTON_SHADOW};
+    }
+    @media only screen and (max-width: 768px) {
+      width: 60%;
+      font-size: 0.8em;
+      padding: 8px;
     }
   }
 `;
