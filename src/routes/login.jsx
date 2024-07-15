@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 `;
 
 const LoginBox = styled.div`
-  width: 100%;
+  width: 90%;
   background-color: white;
   border-radius: 2vh;
   display: flex;
@@ -50,9 +50,6 @@ const LoginBox = styled.div`
   align-items: center;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  @media only screen and (max-width: 768px) {
-    padding: 10px;
-  }
 `;
 
 const ImgDiv = styled.div`
@@ -100,23 +97,18 @@ const Input = styled.input`
   }
   &[type="submit"] {
     margin-top: 20px;
-    width: 50%;
+    width: 40%;
     padding: 10px;
     border-radius: 25px;
     background-color: ${MINSAPAY_BLUE};
     color: white;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: bold;
     cursor: pointer;
     transition: opacity 0.2s;
     &:hover {
       opacity: 0.8;
       box-shadow: 0px 2px 2px 0px ${BUTTON_SHADOW};
-    }
-    @media only screen and (max-width: 768px) {
-      width: 60%;
-      font-size: 0.8em;
-      padding: 8px;
     }
   }
 `;
