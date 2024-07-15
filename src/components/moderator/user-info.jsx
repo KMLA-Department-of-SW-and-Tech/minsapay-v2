@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   margin: 20px; /* 마진 추가 */
   position: fixed;
-  top: 25vh;
+  top: 27vh;
   left: 46vw;
   z-index: 1000; /* 다른 요소 위에 표시되도록 z-index 설정 */
 `;
