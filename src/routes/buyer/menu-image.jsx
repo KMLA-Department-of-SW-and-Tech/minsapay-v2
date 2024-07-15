@@ -5,16 +5,18 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   height: 100vh;
   width: 500px;
-  @media only screen and (max-width: 768px) {
-    width: 100vw;
-  }
+
+`;
+ImageWrapper = styled.div`
+  width: 100%; 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 `;
-const ImageWrapper = styled.img`
+
+const MenuImage = styled.img`
   width: 100%;
 `;
 
@@ -41,7 +43,9 @@ export default function MenuImage() {
 
   return (
     <Wrapper>
-      <ImageWrapper src={MenuImageRef}/>
+      <ImageWrapper>
+        <MenuImage src={MenuImageRef} />
+      </ImageWrapper>
       <CloseButton onClick={onCloseButtonClick}>X</CloseButton>
     </Wrapper>
   );
