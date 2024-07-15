@@ -123,9 +123,9 @@ const Input = styled.input`
       box-shadow: 0px 2px 2px 0px ${BUTTON_SHADOW};
     }
     @media only screen and (max-width: 768px) {
-      width: 60%;
-      font-size: 0.8em;
-      padding: 8px;
+      width: 70%;
+      padding: 15px;
+      font-size: 1.1em;
     }
   }
 `;
