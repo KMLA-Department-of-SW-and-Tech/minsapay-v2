@@ -48,7 +48,7 @@ const StyledInput = styled.input`
   outline: none;
   box-sizing: border-box;
   height: 100%; // Wrapper와 같은 높이로 설정
-  margin-top: 12vh;
+  margin-top: 17vh;
 `;
 
 export function SearchElement({ searchFunc, inputLabel }) {
