@@ -3,10 +3,10 @@ import MenuImageRef from "../../images/MenuImage.png";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: flex;
   width: 500px;
 `;
-ImageWrapper = styled.div`
+const ImageWrapper = styled.div`
   width: 100%;
   height: 100vh;
   &::-webkit-scrollbar {
