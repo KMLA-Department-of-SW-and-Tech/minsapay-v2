@@ -154,6 +154,14 @@ export default function DeveloperHome() {
     //await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
     //await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
   }
+  const onTeamInfoXlUpload = async (e) => {
+    setUploadable(false);
+    const file = e.target.files[0];
+    let xldata = await readXlOfEachSheet(file); // needs fix
+    console.log(xldata);
+    e.target.value = ""; // 같은 파일 입력해도 반복 실행 */
+    setUploadable(true);
+  }
   return (
     <Wrapper>
       <p>Developer Home</p>
@@ -165,6 +173,17 @@ export default function DeveloperHome() {
       </DatabaseInfoButton>
       <input
         onChange={uploadable ? onXlUpload : null}
+        type="file"
+        accept=".xls, .xlsx"
+        required
+        id="xl-submit"
+        style={{ display: "none" }}
+      />
+      <DatabaseInfoButton htmlFor="xl-submit">
+        {uploadable ? "Upload Team Info" : "Uploading"}
+      </DatabaseInfoButton>
+      <input
+        onChange={uploadable ? onTeamInfoXlUpload : null}
         type="file"
         accept=".xls, .xlsx"
         required
