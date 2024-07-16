@@ -293,7 +293,7 @@ const developerFirebase = {
     /* console.log(querySnapshot) */
     querySnapshot.forEach(student => {
       const studentData = student.data();
-      moneySupply += (studentData.balance > 0 ? studentData.balance : 2 * studentData.balances);
+      moneySupply += (studentData.balance > 0 ? studentData.balance : 2 * studentData.balance);
       //if(studentData.balance < 0) console.log(studentData);
       const orderHistory = JSON.parse(studentData.order_history);
       orderHistory.forEach(order => {
