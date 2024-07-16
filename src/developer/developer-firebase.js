@@ -1,4 +1,4 @@
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, query, collection, getDocs, where } from "firebase/firestore";
 import { authentication, database } from "../firebase";
 import cryptoJS from "crypto-js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -246,12 +246,12 @@ const developerFirebase = {
       Teams: {},
     };
   },
-  async getLogData() {
+  /* async getLogData() {
     const logRef = doc(database, "Admin", "log");
     const logSnapshot = await getDoc(logRef);
     return logSnapshot.data().log;
-  },
-  organizeLogData(logData) {
+  }, */
+  async getTransactionData() {
     const teamInfo = {
       "빈즈니스": { teamID: "beansness", balance: 0, },
       "족보": { teamID: "jokbo", balance: 0, },
@@ -270,14 +270,11 @@ const developerFirebase = {
       "행정위": { teamID: "minsa", balance: 0, },
       "죄와벌": { teamID: "crimenp", balance: 0, },
     }
-    logData.forEach(log => {
-      if(log.reciever in teamInfo) { // I can't believe I'm writing this un-grammar-correct code...
-        teamInfo[log.reciever].balance += log.amount;
-      } else if(log.sender in teamInfo) {
-        teamInfo[log.sender].balance -= log.amount;
-      }
-    })
-    return teamInfo;
+    const q = query(collection(database, "Students"), where("order_history", "!==", "[]"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc, index) => {if(index <= 10) console.log(doc.data())})
+
+
   }
 };
 

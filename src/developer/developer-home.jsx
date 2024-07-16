@@ -144,16 +144,15 @@ export default function DeveloperHome() {
     await loginUtils.signOut();
     navigate("/");
   };
-  const onGetLogInfoClick = async () => {
-    const logData = await developerFirebase.getLogData();
-    console.log(developerFirebase.organizeLogData(logData));
+  const onGetTransactionInfoClick = async () => {
+    const transactionData = await developerFirebase.getTransactionData();
     
   }
   return (
     <Wrapper>
       <p>Developer Home</p>
-      <DatabaseInfoButton onClick={onGetLogInfoClick}>
-        Get Log Info
+      <DatabaseInfoButton onClick={onGetTransactionInfoClick}>
+        Get Transaction Info
       </DatabaseInfoButton>
       <DatabaseInfoButton htmlFor="xl-submit">
         {uploadable ? "Upload Database Info" : "Uploading"}
