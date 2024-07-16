@@ -305,7 +305,7 @@ const developerFirebase = {
     for(let team of Object.keys(teamInfo)) {
       moneySupply += teamInfo[team].balance;
     }
-    const logRef = doc(database, "Admin", "log");
+/*     const logRef = doc(database, "Admin", "log");
     const logSnapshot = await getDoc(logRef);
     const logData = logSnapshot.data().log;
     logData.forEach(log => {
@@ -313,7 +313,7 @@ const developerFirebase = {
       {
         if(log.amount % 1000 !== 0) console.log(log);
       }
-    })
+    }) */
 
     return [ teamInfo, moneySupply ];
   }
