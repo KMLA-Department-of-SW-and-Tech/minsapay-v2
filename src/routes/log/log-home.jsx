@@ -80,8 +80,8 @@ export default function LogHome() {
   ) : (
     <Wrapper>
       <ModeratorHeader logButtonEnable={false}/>
-      <button onClick={async () => {developerFirebase.readLog()}}/>
       <TitleEl>Log</TitleEl>
+      <button onClick={async () => {developerFirebase.readLog()}}/>
       <Table>
         <thead>
           <tr>
