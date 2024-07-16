@@ -8,6 +8,7 @@ import {
   BACKGROUND_GRAY,
 } from "../../components/theme-definition";
 import { ModeratorHeader } from "../../components/moderator/moderator-header";
+import { developerFirebase } from "../../developer/developer-firebase";
 
 
 const Wrapper = styled.div`
@@ -79,6 +80,7 @@ export default function LogHome() {
   ) : (
     <Wrapper>
       <ModeratorHeader logButtonEnable={false}/>
+      <button onClick={async () => {developerFirebase.readLog()}}/>
       <TitleEl>Log</TitleEl>
       <Table>
         <thead>
