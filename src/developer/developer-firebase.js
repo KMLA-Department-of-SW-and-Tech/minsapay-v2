@@ -385,7 +385,18 @@ const developerFirebase = {
     return [ resultTeamInfoFromBuyerDatabase, resultTeamInfoFromLogDatabase, teamInfoFromBuyerDatabase, teamInfoFromLogDatabase, moneySupply ];
   },
   getBalances(teamInfo) {
-    
+    let result = {};
+    for(let team of Object.keys(teamInfo)) {
+      let sum = 0;
+      teamInfo[team].forEach(student => {
+        let tmp = 0;
+        const data = JSON.parse(student.data);
+        data.forEach(tran => tmp += tran);
+        sum += tmp;
+      })
+      result[team] = sum;
+    }
+    return result;
   },
   async buyerValid() {
     let moneySupply = 0;
@@ -415,7 +426,7 @@ const developerFirebase = {
     let sum = 0;
     f.forEach(val => sum += val.amount)
     console.log("dlsdjfl", sum)
-  }
+  },
 };
 
 export { developerFirebase };
