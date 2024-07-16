@@ -332,7 +332,6 @@ const developerFirebase = {
     const logData = logSnapshot.data().log;
     logData.forEach(log => {
       if(this.getTeamIDFromTeamName(log.reciever) !== "non-booth") { // receiver is a team
-        console.log(this.getTeamIDFromTeamName(log.reciever))
         teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.reciever)].balance += log.amount;
         teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.reciever)].orderLog[this.getStudentIDFromStudentName(log.sender, studentPairData)].push(log.amount);
       } else if(this.getTeamIDFromTeamName(log.sender) !== "non-booth") { // sender is a team
@@ -341,7 +340,42 @@ const developerFirebase = {
       }
     })
 
-    return [ teamInfoFromBuyerDatabase, teamInfoFromLogDatabase, moneySupply];
+    const resultTeamInfoFromBuyerDatabase = {
+      "beansness": { balance: 0, orderLog: {}, },
+      "jokbo": { balance: 0, orderLog: {}, },
+      "spinel29": { balance: 0, orderLog: {}, },
+      "applepie": { balance: 0, orderLog: {}, },
+      "aventures": { balance: 0, orderLog: {}, },
+      "psyche": { balance: 0, orderLog: {}, },
+      "beeing": { balance: 0, orderLog: {}, },
+      "sooyun": { balance: 0, orderLog: {}, },
+      "illusion": { balance: 0, orderLog: {}, },
+      "ttl": { balance: 0, orderLog: {}, },
+      "fuckingwallpainting": { balance: 0, orderLog: {}, },
+      "daechita": { balance: 0, orderLog: {}, },
+      "twninmoongi": { balance: 0, orderLog: {}, },
+      "dupjae": { balance: 0, orderLog: {}, },
+      "minsa": { balance: 0, orderLog: {}, },
+      "crimenp": { balance: 0, orderLog: {}, },
+      "kwagibu": { balance: 0, orderLog: {}, },
+    }
+    const resultTeamInfoFromLogDatabase = Object.assign({}, resultTeamInfoFromBuyerDatabase);
+
+    for(let team of Object.keys(teamInfoFromBuyerDatabase)) {
+      for(let student of Object.keys(teamInfoFromBuyerDatabase[team].orderLog)) {
+        if(teamInfoFromBuyerDatabase[team].orderLog[student].length !== 0) {
+          resultTeamInfoFromBuyerDatabase[team].orderLog[student] = teamInfoFromBuyerDatabase[team].orderLog[student];
+        }
+      }
+    }
+    for(let team of Object.keys(teamInfoFromLogDatabase)) {
+      for(let student of Object.keys(teamInfoFromLogDatabase[team].orderLog)) {
+        if(teamInfoFromLogDatabase[team].orderLog[student].length !== 0) {
+          resultTeamInfoFromLogDatabase[team].orderLog[student] = teamInfoFromLogDatabase[team].orderLog[student];
+        }
+      }
+    }
+    return [ resultTeamInfoFromBuyerDatabase, resultTeamInfoFromLogDatabase, moneySupply];
   }
 };
 
