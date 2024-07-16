@@ -295,6 +295,7 @@ const developerFirebase = {
       const studentData = student.data();
       moneySupply += studentData.balance;
       const orderHistory = JSON.parse(studentData.order_history);
+      if(studentData.balance % 1000 !== 0) console.log(student.id)
       orderHistory.forEach(order => {
         //console.log(order);
         if(order.refund_request !== 1) {
