@@ -270,7 +270,7 @@ const developerFirebase = {
       case "맥두날두": return "dupjae";
       case "행정위": return "minsa";
       case "죄와벌": return "crimenp";
-      default: "non-booth";
+      default: return "non-booth";
     }
   },
   async readStudentDataFromXlFile(file) {
