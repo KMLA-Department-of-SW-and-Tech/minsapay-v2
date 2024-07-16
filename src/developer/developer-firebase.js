@@ -293,13 +293,15 @@ const developerFirebase = {
     /* console.log(querySnapshot) */
     querySnapshot.forEach(student => {
       const studentData = student.data();
-      moneySupply += studentData.balance;
+      moneySupply += studentData.balance > 0 ? studentData.balance : 2 * studentData.balances;
       //if(studentData.balance < 0) console.log(studentData);
       const orderHistory = JSON.parse(studentData.order_history);
       orderHistory.forEach(order => {
         //console.log(order);
-        if(order.refund_request !== 1) {
+        if(order.refund_request === 0) {
           teamInfo[order.team_id].balance += order.price;
+        } else {
+          //
         }
       })
     })
