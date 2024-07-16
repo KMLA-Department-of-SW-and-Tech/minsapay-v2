@@ -269,58 +269,52 @@ const developerFirebase = {
       "맥두날두": { teamID: "dupjae", balance: 0, },
       "행정위": { teamID: "minsa", balance: 0, },
       "죄와벌": { teamID: "crimenp", balance: 0, }, */
-      "beansness": { balance: 0 },
-      "jokbo": { balance: 0 },
-      "spinel29": { balance: 0 },
-      "applepie": { balance: 0 },
-      "aventures": { balance: 0 },
-      "psyche": { balance: 0 },
-      "beeing": { balance: 0 },
-      "sooyun": { balance: 0 },
-      "illusion": { balance: 0 },
-      "ttl": { balance: 0 },
-      "fuckingwallpainting": { balance: 0 },
-      "daechita": { balance: 0 },
-      "twninmoongi": { balance: 0 },
-      "dupjae": { balance: 0 },
-      "minsa": { balance: 0 },
-      "crimenp": { balance: 0 },
-      "kwagibu": { balance: 0 },
+      "beansness": { balance: 0, orderLog: {}, },
+      "jokbo": { balance: 0, orderLog: {}, },
+      "spinel29": { balance: 0, orderLog: {}, },
+      "applepie": { balance: 0, orderLog: {}, },
+      "aventures": { balance: 0, orderLog: {}, },
+      "psyche": { balance: 0, orderLog: {}, },
+      "beeing": { balance: 0, orderLog: {}, },
+      "sooyun": { balance: 0, orderLog: {}, },
+      "illusion": { balance: 0, orderLog: {}, },
+      "ttl": { balance: 0, orderLog: {}, },
+      "fuckingwallpainting": { balance: 0, orderLog: {}, },
+      "daechita": { balance: 0, orderLog: {}, },
+      "twninmoongi": { balance: 0, orderLog: {}, },
+      "dupjae": { balance: 0, orderLog: {}, },
+      "minsa": { balance: 0, orderLog: {}, },
+      "crimenp": { balance: 0, orderLog: {}, },
+      "kwagibu": { balance: 0, orderLog: {}, },
     }
     let moneySupply = 0;
-    let minusMoney = 0;
     const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
-    /* console.log(querySnapshot) */
     querySnapshot.forEach(student => {
       const studentData = student.data();
       moneySupply += studentData.balance;
-      if(studentData.balance < 0) minusMoney += studentData.balance;
-      //if(studentData.balance < 0) console.log(studentData);
       const orderHistory = JSON.parse(studentData.order_history);
+      for(let team of Object.keys(teamInfo)) {
+        teamInfo[team].orderLog[student.id] = [];
+      }
       orderHistory.forEach(order => {
         //console.log(order);
         if(order.refund_request === 0) {
           teamInfo[order.team_id].balance += order.price;
+          teamInfo[order.team_id].orderLog[student.id].push(order.price)
         } else {
-          //
+          teamInfo[order.team_id].orderLog.push(-order.price);
         }
       })
     })
     for(let team of Object.keys(teamInfo)) {
       moneySupply += teamInfo[team].balance;
     }
-/*     const logRef = doc(database, "Admin", "log");
+    /* const logRef = doc(database, "Admin", "log");
     const logSnapshot = await getDoc(logRef);
-    const logData = logSnapshot.data().log;
-    logData.forEach(log => {
-      if(log.sender === "moderator")
-      {
-        if(log.amount % 1000 !== 0) console.log(log);
-      }
-    }) */
+    const logData = logSnapshot.data().log; */
 
-    return [ teamInfo, moneySupply, minusMoney ];
+    return [ teamInfo, moneySupply, ];
   }
 };
 
