@@ -249,10 +249,12 @@ const developerFirebase = {
   async getLogData() {
     const logRef = doc(database, "Admin", "log");
     const logSnapshot = await getDoc(logRef);
-    return logSnapshot.data();
+    return logSnapshot.data().log;
   },
   organizeLogData() {
-    
+    function getTimeIDByTeamName(teamName) {
+
+    }
   }
 };
 
