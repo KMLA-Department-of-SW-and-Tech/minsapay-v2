@@ -158,7 +158,7 @@ export default function DeveloperHome() {
     setUploadable(false);
     const file = e.target.files[0];
     let xldata = await readXlOfEachSheet(file); // needs fix
-    console.log(xldata);
+     
     e.target.value = ""; // 같은 파일 입력해도 반복 실행 */
     setUploadable(true);
   }

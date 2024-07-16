@@ -382,10 +382,10 @@ const developerFirebase = {
         teamInfoFromLogDatabase[team].orderLog[student].sort();
       }
     }
-
-
-
     return [ resultTeamInfoFromBuyerDatabase, resultTeamInfoFromLogDatabase, teamInfoFromBuyerDatabase, teamInfoFromLogDatabase ];
+  },
+  getBalances(teamInfo) {
+    
   }
 };
 
