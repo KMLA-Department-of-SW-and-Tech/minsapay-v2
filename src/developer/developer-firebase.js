@@ -375,7 +375,17 @@ const developerFirebase = {
         }
       }
     }
-    return [ resultTeamInfoFromBuyerDatabase, resultTeamInfoFromLogDatabase];
+
+    for(let team of Object.keys(teamInfoFromBuyerDatabase)) {
+      for(let student of Object.keys(teamInfoFromBuyerDatabase[team].orderLog)) {
+        teamInfoFromBuyerDatabase[team].orderLog[student].sort();
+        teamInfoFromLogDatabase[team].orderLog[student].sort();
+      }
+    }
+
+
+
+    return [ resultTeamInfoFromBuyerDatabase, resultTeamInfoFromLogDatabase, teamInfoFromBuyerDatabase, teamInfoFromLogDatabase ];
   }
 };
 
