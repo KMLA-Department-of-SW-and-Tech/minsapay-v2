@@ -303,7 +303,7 @@ const developerFirebase = {
           teamInfo[order.team_id].balance += order.price;
           teamInfo[order.team_id].orderLog[student.id].push(order.price)
         } else {
-          teamInfo[order.team_id].orderLog.push(-order.price);
+          teamInfo[order.team_id].orderLog[student.id].push(-order.price);
         }
       })
     })
