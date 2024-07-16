@@ -414,7 +414,7 @@ const developerFirebase = {
     const f = logData.filter(val => val.sender === "moderator")
     let sum = 0;
     f.forEach(val => sum += val.amount)
-    console.log("dlsdjfl", f)
+    console.log("dlsdjfl", sum)
   }
 };
 
