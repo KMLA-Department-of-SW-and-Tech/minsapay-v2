@@ -151,9 +151,9 @@ export default function DeveloperHome() {
   return (
     <Wrapper>
       <p>Developer Home</p>
-      <GetLogInfoButton onClick={onGetLogInfoClick}>
+      <DatabaseInfoButton onClick={onGetLogInfoClick}>
         Get Log Info
-      </GetLogInfoButton>
+      </DatabaseInfoButton>
       <DatabaseInfoButton htmlFor="xl-submit">
         {uploadable ? "Upload Database Info" : "Uploading"}
       </DatabaseInfoButton>
