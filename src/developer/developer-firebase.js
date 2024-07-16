@@ -270,7 +270,7 @@ const developerFirebase = {
       "행정위": { teamID: "minsa", balance: 0, },
       "죄와벌": { teamID: "crimenp", balance: 0, },
     }
-    const q = query(collection(database, "Students"), where("order_history", "!==", "[]"));
+    const q = query(collection(database, "Students"), where("order_history", "!=", "[]"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc, index) => {if(index <= 10) console.log(doc.data())})
 
