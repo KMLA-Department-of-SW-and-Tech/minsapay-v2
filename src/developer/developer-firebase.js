@@ -390,7 +390,27 @@ const developerFirebase = {
   },
   getBalances(teamInfo) {
     
+  },
+  async buyerValid() {
+    let moneySupply = 0;
+    const q = query(collection(database, "Students"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(student => {
+      const studentData = student.data();
+      moneySupply += studentData.balance;
+      const orderHistory = JSON.parse(studentData.order_history);
+      orderHistory.forEach(order => {
+        //console.log(order);
+        if(order.refund_request === 0) {  
+          moneySupply += order.price;
+        } else {
+          //
+        }
+      })
+    })
+    return moneySupply;
   }
+
 };
 
 export { developerFirebase };
