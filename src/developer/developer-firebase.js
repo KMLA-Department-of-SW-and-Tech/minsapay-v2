@@ -294,6 +294,7 @@ const developerFirebase = {
     querySnapshot.forEach(student => {
       const studentData = student.data();
       moneySupply += studentData.balance;
+      if(studentData.balance < 0) console.log(studentData);
       const orderHistory = JSON.parse(studentData.order_history);
       orderHistory.forEach(order => {
         //console.log(order);
