@@ -195,7 +195,7 @@ const developerFirebase = {
     // console.log(resultUserDocumentData);
   }, */
   async submitStudentData(subData) {
-    console.log(subData);
+    /* console.log(subData); */
     let resultData = Object.assign({}, subData);
     for (let student of Object.keys(subData)) {
       const rpw = this.randomPassword();
@@ -215,7 +215,7 @@ const developerFirebase = {
     return resultData;
   },
   async submitTeamData(subData) {
-    console.log(subData);
+    /* console.log(subData); */
     let resultData = Object.assign({}, subData);
     for (let team of Object.keys(subData)) {
       const pw = this.randomPassword();
@@ -290,7 +290,7 @@ const developerFirebase = {
     let moneySupply = 0;
     const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
-    console.log(querySnapshot)
+    /* console.log(querySnapshot) */
     querySnapshot.forEach(student => {
       const studentData = student.data();
       moneySupply += studentData.balance;
