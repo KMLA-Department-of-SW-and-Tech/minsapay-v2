@@ -3,7 +3,6 @@ import { MINSAPAY_BLUE } from "../components/theme-definition";
 import {
   readXlOfEachSheet /* writeXlFromData */,
   writeXlFromData,
-  writeXlFromLogInfo,
 } from "./xlsx-conversion";
 import { developerFirebase } from "./developer-firebase";
 import { useState } from "react";
@@ -85,7 +84,7 @@ const Logout = styled.div`
 `;
 
 export default function DeveloperHome() {
-  const [subData, setSubData] = useState({});
+  const [subData /* setSubData */] = useState({});
   /* const [remainingTime, setRemainingTime] = useState(0);
   const [clickable, setClickable] = useState(true); */
   const [uploadable, setUploadable] = useState(true);
@@ -95,7 +94,7 @@ export default function DeveloperHome() {
     setUploadable(false);
     const file = e.target.files[0];
     setFile(file);
-    let xldata = await readXlOfEachSheet(file); // needs fix
+    //let xldata = await readXlOfEachSheet(file); // needs fix
     //setSubData(developerFirebase.standardizeSubData(xldata));
     //console.log(developerFirebase.standardizeSubData(xldata));
     e.target.value = ""; // 같은 파일 입력해도 반복 실행 */
@@ -149,14 +148,15 @@ export default function DeveloperHome() {
   };
   const onGetTransactionInfoClick = async () => {
     console.log(file);
-    const transactionData = await developerFirebase.getTransactionData(file);
+    const transactionData =
+      await developerFirebase.getTransactionData(/* file */);
     console.log(transactionData);
     //const tmp = await developerFirebase.buyerValid();
     //console.log(tmp);
     //await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
     //await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
     await developerFirebase.readLog();
-  }
+  };
   const onTeamInfoXlUpload = async (e) => {
     setUploadable(false);
     const file = e.target.files[0];
@@ -165,7 +165,7 @@ export default function DeveloperHome() {
     console.log(developerFirebase.getBalances(xldata));
     e.target.value = ""; // 같은 파일 입력해도 반복 실행 */
     setUploadable(true);
-  }
+  };
   return (
     <Wrapper>
       <p>Developer Home</p>
