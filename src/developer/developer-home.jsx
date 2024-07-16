@@ -145,27 +145,8 @@ export default function DeveloperHome() {
     navigate("/");
   };
   const onGetLogInfoClick = async () => {
-    const teamInfo = {
-      "빈즈니스": { teamID: "beansness", balance: 0, },
-      "족보": { teamID: "jokbo", balance: 0, },
-      "스피넬": { teamID: "spinel29", balance: 0, },
-      "애플파이":  { teamID: "applepie", balance: 0, },
-      "어벤처스": { teamID: "aventures", balance: 0, },
-      "프시케": { teamID: "psyche", balance: 0, },
-      "비이잉": { teamID: "beeing", balance: 0, },
-      "Girlup HSSK": { teamID: "sooyun", balance: 0, },
-      "일루전":  { teamID: "illusion", balance: 0, },
-      "TTL":  { teamID: "ttl", balance: 0, },
-      "경국지화": { teamID: "fuckingwallpainting", balance: 0, },
-      "대취타": { teamID: "daechita", balance: 0, },
-      "문기부": { teamID: "twninmoongi", balance: 0, },
-      "맥두날두": { teamID: "dupjae", balance: 0, },
-      "행정위": { teamID: "minsa", balance: 0, },
-      "죄와벌": { teamID: "crimenp", balance: 0, },
-    }
-    console.log(Object.keys(teamInfo))
     const logData = await developerFirebase.getLogData();
-    console.log(logData);
+    console.log(developerFirebase.organizeLogData(logData));
     
   }
   return (
