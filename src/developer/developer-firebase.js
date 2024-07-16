@@ -273,7 +273,7 @@ const developerFirebase = {
     const q = query(collection(database, "Students"), where("order_history", "!=", "[]"));
     const querySnapshot = await getDocs(q);
     console.log(querySnapshot)
-    querySnapshot.forEach(doc => console.log(doc.data()))
+    querySnapshot.forEach(doc => {if(doc.data().username === "김상원") console.log(doc.data())})
 
 
   }
