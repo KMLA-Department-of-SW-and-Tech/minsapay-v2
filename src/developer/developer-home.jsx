@@ -146,7 +146,11 @@ export default function DeveloperHome() {
   };
   const onGetTransactionInfoClick = async () => {
     const transactionData = await developerFirebase.getTransactionData();
-    console.log(transactionData);
+    let resultString = "";
+    for(let key of Object.keys(transactionData)) {
+      resultString.concat("The total balance of ".concat(key).concat(" is ").concat(String(transactionData[key].balance)).concat("\n"))
+    }
+    console.log(resultString)
   }
   return (
     <Wrapper>
