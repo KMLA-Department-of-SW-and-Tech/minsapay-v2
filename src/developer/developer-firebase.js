@@ -287,12 +287,14 @@ const developerFirebase = {
       "crimenp": { balance: 0 },
       "kwagibu": { balance: 0 },
     }
+    let moneySupply = 0;
     const q = query(collection(database, "Students"), where("order_history", "!=", "[]"));
     const querySnapshot = await getDocs(q);
     console.log(querySnapshot)
-    querySnapshot.forEach(doc => {
-      const docData = doc.data();
-      const orderHistory = JSON.parse(docData.order_history);
+    querySnapshot.forEach(student => {
+      const studentData = student.data();
+      moneySupply += studentData.balance;
+      const orderHistory = JSON.parse(studentData.order_history);
       orderHistory.forEach(order => {
         //console.log(order);
         if(order.refund_request !== 1) {
@@ -300,8 +302,10 @@ const developerFirebase = {
         }
       })
     })
-
-    return teamInfo;
+    for(let team of Object.keys(teamInfo)) {
+      moneySupply += teamInfo[team].balance;
+    }
+    return [ teamInfo, moneySupply ];
   }
 };
 
