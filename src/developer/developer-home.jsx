@@ -145,7 +145,7 @@ export default function DeveloperHome() {
     navigate("/");
   };
   const onGetLogInfoClick = async () => {
-    const logData = await getLogData();
+    const logData = await developerFirebase.getLogData();
     console.log(logData);
   }
   return (
