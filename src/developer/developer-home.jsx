@@ -144,14 +144,16 @@ export default function DeveloperHome() {
     await loginUtils.signOut();
     navigate("/");
   };
+  const onGetLogInfoClick = async () => {
+    const logData = await getLogData();
+    console.log(logData);
+  }
   return (
     <Wrapper>
       <p>Developer Home</p>
-      {/* <GetDatabaseInfoButton onClick={clickable ? onGetDataClick : null}>
-        {remainingTime === 0
-          ? "Get Database Info"
-          : "Download starting in " + String(remainingTime) + " seconds"}
-      </GetDatabaseInfoButton> */}
+      <GetLogInfoButton onClick={onGetLogInfoClick}>
+        Get Log Info
+      </GetLogInfoButton>
       <DatabaseInfoButton htmlFor="xl-submit">
         {uploadable ? "Upload Database Info" : "Uploading"}
       </DatabaseInfoButton>

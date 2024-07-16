@@ -8,6 +8,7 @@ const logFirebase = {
 
   async init() {
     this.logRef = doc(database, "Admin", "log");
+    
   },
 };
 

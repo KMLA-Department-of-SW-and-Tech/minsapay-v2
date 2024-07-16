@@ -1,4 +1,4 @@
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { authentication, database } from "../firebase";
 import cryptoJS from "crypto-js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -245,6 +245,11 @@ const developerFirebase = {
       Students: data1,
       Teams: {},
     };
+  },
+  async getLogData() {
+    const logRef = doc(database, "Admin", "log");
+    const logSnapshot = await getDoc(logRef);
+    return logSnapshot.data();
   },
 };
 
