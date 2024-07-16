@@ -1,4 +1,4 @@
-import { doc, setDoc, query, collection, getDocs, where } from "firebase/firestore";
+import { doc, setDoc, query, collection, getDocs, getDoc } from "firebase/firestore";
 import { authentication, database } from "../firebase";
 import cryptoJS from "crypto-js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -305,6 +305,16 @@ const developerFirebase = {
     for(let team of Object.keys(teamInfo)) {
       moneySupply += teamInfo[team].balance;
     }
+    const logRef = doc(database, "Admin", "log");
+    const logSnapshot = await getDoc(logRef);
+    const logData = logSnapshot.data().log;
+    logData.forEach(log => {
+      if(log.sender === "moderator")
+      {
+        if(log.amount % 1000 !== 0) console.log(log);
+      }
+    })
+
     return [ teamInfo, moneySupply ];
   }
 };
