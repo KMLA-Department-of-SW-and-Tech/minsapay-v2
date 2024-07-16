@@ -410,7 +410,11 @@ const developerFirebase = {
     const logRef = doc(database, "Admin", "log");
     const logSnapshot = await getDoc(logRef);
     const logData = logSnapshot.data().log;
-    console.log(logData.filter(val => val.reciever === "moderator"));
+    console.log(logData.filter(val => val.sender === "moderator"));
+    const f = logData.filter(val => val.sender === "moderator")
+    let sum = 0;
+    f.forEach(val => sum += val.amount)
+    console.log("dlsdjfl", f)
   }
 };
 
