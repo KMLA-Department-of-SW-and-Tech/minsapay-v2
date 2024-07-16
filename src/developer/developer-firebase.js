@@ -197,7 +197,7 @@ const developerFirebase = {
   }, */
   async submitStudentData(subData) {
     /* console.log(subData); */
-    let resultData = Object.assign({}, subData);
+    let resultData = JSON.parse(JSON.stringify(({}, subData)));
     for (let student of Object.keys(subData)) {
       const rpw = this.randomPassword();
       resultData[student].password = rpw;
@@ -217,7 +217,7 @@ const developerFirebase = {
   },
   async submitTeamData(subData) {
     /* console.log(subData); */
-    let resultData = Object.assign({}, subData);
+    let resultData = JSON.parse(JSON.stringify(({}, subData)));
     for (let team of Object.keys(subData)) {
       const pw = this.randomPassword();
       resultData[team].passowrd = pw;
@@ -301,7 +301,7 @@ const developerFirebase = {
       "crimenp": { balance: 0, orderLog: {}, },
       "kwagibu": { balance: 0, orderLog: {}, },
     }
-    const teamInfoFromLogDatabase = Object.assign({}, teamInfoFromBuyerDatabase);
+    const teamInfoFromLogDatabase = JSON.parse(JSON.stringify(({}, teamInfoFromBuyerDatabase)));
     let moneySupply = 0;
     const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
@@ -359,7 +359,7 @@ const developerFirebase = {
       "crimenp": { balance: 0, orderLog: {}, },
       "kwagibu": { balance: 0, orderLog: {}, },
     }
-    const resultTeamInfoFromLogDatabase = Object.assign({}, resultTeamInfoFromBuyerDatabase);
+    const resultTeamInfoFromLogDatabase = JSON.parse(JSON.stringify(({}, resultTeamInfoFromBuyerDatabase)));
 
     for(let team of Object.keys(teamInfoFromBuyerDatabase)) {
       for(let student of Object.keys(teamInfoFromBuyerDatabase[team].orderLog)) {
