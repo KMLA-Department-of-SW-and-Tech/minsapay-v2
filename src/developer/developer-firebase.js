@@ -277,6 +277,7 @@ const developerFirebase = {
       const docData = doc.data();
       const orderHistory = JSON.parse(docData.order_history);
       orderHistory.forEach(order => {
+        console.log(order);
         if(order.refund_request !== 1) {
           teamInfo[order.team_name].balance += order.price;
         }
