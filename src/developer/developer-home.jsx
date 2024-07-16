@@ -153,8 +153,8 @@ export default function DeveloperHome() {
     console.log(transactionData);
     const tmp = await developerFirebase.buyerValid();
     console.log(tmp);
-    //await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
-    //await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
+    await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
+    await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
   }
   const onTeamInfoXlUpload = async (e) => {
     setUploadable(false);
