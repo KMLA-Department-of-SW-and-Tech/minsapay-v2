@@ -46,9 +46,7 @@ const writeXlFromLogInfo = (fileName, logInfo) => {
     for (let team of Object.keys(logInfo)) {
       let writeData = [];
       for (let student of Object.keys(logInfo[team].orderLog)) {
-        let tmp = {  };
-        tmp[student] = logInfo[team].orderLog[student]
-        writeData.push(tmp);
+        writeData.push({ student_id: student, data: JSON.stringify(logInfo[team].orderLog[student]) });
       }
       const ws = utils.json_to_sheet(writeData);
       utils.book_append_sheet(wb, ws, team);
