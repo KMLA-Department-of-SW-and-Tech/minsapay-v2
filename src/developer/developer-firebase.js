@@ -275,10 +275,14 @@ const developerFirebase = {
   },
   async readStudentDataFromXlFile(file) {
     const fileData = await readXlOfEachSheet(file);
-    console.log(fileData);
+    return fileData.Students;
+  },
+  getStudentIDFromStudentName(studentName, studentPairData) {
+    return studentPairData.find(student => student.username === studentName).user_id;
   },
   async getTransactionData(file) {
-    await this.readStudentDataFromXlFile(file);
+    const studentPairData = await this.readStudentDataFromXlFile(file);
+    console.log(this.getStudentIDFromStudentName("조유찬"))
     const teamInfoFromBuyerDatabase = {
       "beansness": { balance: 0, orderLog: {}, },
       "jokbo": { balance: 0, orderLog: {}, },
@@ -328,12 +332,12 @@ const developerFirebase = {
     const logSnapshot = await getDoc(logRef);
     const logData = logSnapshot.data().log;
     logData.forEach(log => {
-      if(getTeamIDFromTeamName(log.reciever) !== "non-booth") { // receiver is a team
-        teamInfoFromLogDatabase[getTeamIDFromTeamName(log.reciever)].balance += log.amount;
-        //teamInfoFromLogDatabase[getTeamIDFromTeamName(log.reciever)].orderLog()
-      } else if(getTeamIDFromTeamName(log.sender) !== "non-booth") { // sender is a team
-        teamInfoFromLogDatabase[getTeamIDFromTeamName(log.sender)].balance -= log.amount;
-        //teamInfoFromLogDatabase[getTeamIDFromTeamName(log.reciever)].orderLog()
+      if(this.getTeamIDFromTeamName(log.reciever) !== "non-booth") { // receiver is a team
+        teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.reciever)].balance += log.amount;
+        //teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.reciever)].orderLog()
+      } else if(this.getTeamIDFromTeamName(log.sender) !== "non-booth") { // sender is a team
+        teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.sender)].balance -= log.amount;
+        //teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.reciever)].orderLog()
       }
     })
 
