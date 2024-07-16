@@ -288,7 +288,7 @@ const developerFirebase = {
       "kwagibu": { balance: 0 },
     }
     let moneySupply = 0;
-    const q = query(collection(database, "Students"), where("order_history", "!=", "[]"));
+    const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
     console.log(querySnapshot)
     querySnapshot.forEach(student => {
