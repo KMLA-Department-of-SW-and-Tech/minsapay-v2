@@ -253,7 +253,7 @@ const developerFirebase = {
   }, */
   async getTransactionData() {
     const teamInfo = {
-      "빈즈니스": { teamID: "beansness", balance: 0, },
+/*       "빈즈니스": { teamID: "beansness", balance: 0, },
       "족보": { teamID: "jokbo", balance: 0, },
       "스피넬": { teamID: "spinel29", balance: 0, },
       "애플파이":  { teamID: "applepie", balance: 0, },
@@ -268,7 +268,24 @@ const developerFirebase = {
       "문기부": { teamID: "twninmoongi", balance: 0, },
       "맥두날두": { teamID: "dupjae", balance: 0, },
       "행정위": { teamID: "minsa", balance: 0, },
-      "죄와벌": { teamID: "crimenp", balance: 0, },
+      "죄와벌": { teamID: "crimenp", balance: 0, }, */
+      "beansness": { balance: 0 },
+      "jokbo": { balance: 0 },
+      "spinel29": { balance: 0 },
+      "applepie": { balance: 0 },
+      "aventures": { balance: 0 },
+      "psyche": { balance: 0 },
+      "beeing": { balance: 0 },
+      "sooyun": { balance: 0 },
+      "illusion": { balance: 0 },
+      "ttl": { balance: 0 },
+      "fuckingwallpainting": { balance: 0 },
+      "daechita": { balance: 0 },
+      "twninmoongi": { balance: 0 },
+      "dupjae": { balance: 0 },
+      "minsa": { balance: 0 },
+      "crimenp": { balance: 0 },
+
     }
     const q = query(collection(database, "Students"), where("order_history", "!=", "[]"));
     const querySnapshot = await getDocs(q);
@@ -279,7 +296,7 @@ const developerFirebase = {
       orderHistory.forEach(order => {
         console.log(order);
         if(order.refund_request !== 1) {
-          teamInfo[order.team_name].balance += order.price;
+          teamInfo[order.team_id].balance += order.price;
         }
       })
     })
