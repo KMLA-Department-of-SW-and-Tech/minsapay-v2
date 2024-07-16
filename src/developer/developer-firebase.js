@@ -288,12 +288,14 @@ const developerFirebase = {
       "kwagibu": { balance: 0 },
     }
     let moneySupply = 0;
+    let minusMoney = 0;
     const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
     /* console.log(querySnapshot) */
     querySnapshot.forEach(student => {
       const studentData = student.data();
-      moneySupply += (studentData.balance > 0 ? studentData.balance : 2 * studentData.balance);
+      moneySupply += studentData.balance;
+      if(studentData.balance < 0) minusMoney += studentData.balance;
       //if(studentData.balance < 0) console.log(studentData);
       const orderHistory = JSON.parse(studentData.order_history);
       orderHistory.forEach(order => {
