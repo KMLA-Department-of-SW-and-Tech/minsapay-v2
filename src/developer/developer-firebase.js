@@ -277,7 +277,7 @@ const developerFirebase = {
     console.log(fileData);
   },
   async getTransactionData(file) {
-    await readStudentDataFromXlFile(file);
+    await this.readStudentDataFromXlFile(file);
     const teamInfoFromBuyerDatabase = {
       "beansness": { balance: 0, orderLog: {}, },
       "jokbo": { balance: 0, orderLog: {}, },
