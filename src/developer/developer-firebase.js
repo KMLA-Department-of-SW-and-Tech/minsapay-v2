@@ -320,7 +320,7 @@ const developerFirebase = {
       }
     }) */
 
-    return [ teamInfo, moneySupply ];
+    return [ teamInfo, moneySupply, minusMoney ];
   }
 };
 
