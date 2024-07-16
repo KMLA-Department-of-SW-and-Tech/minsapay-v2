@@ -148,7 +148,7 @@ export default function DeveloperHome() {
     navigate("/");
   };
   const onGetTransactionInfoClick = async () => {
-    //console.log(file);
+    console.log(file);
     const transactionData = await developerFirebase.getTransactionData(file);
     console.log(transactionData);
     //const tmp = await developerFirebase.buyerValid();
