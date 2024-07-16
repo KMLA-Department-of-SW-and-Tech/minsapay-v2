@@ -272,7 +272,8 @@ const developerFirebase = {
     }
     const q = query(collection(database, "Students"), where("order_history", "!=", "[]"));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc, index) => {if(index <= 10) console.log(doc.data())})
+    console.log(querySnapshot)
+    querySnapshot.forEach(doc => console.log(doc.data()))
 
 
   }
