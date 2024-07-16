@@ -375,7 +375,7 @@ const developerFirebase = {
         }
       }
     }
-    return [ resultTeamInfoFromBuyerDatabase, resultTeamInfoFromLogDatabase, moneySupply];
+    return [ resultTeamInfoFromBuyerDatabase, resultTeamInfoFromLogDatabase];
   }
 };
 

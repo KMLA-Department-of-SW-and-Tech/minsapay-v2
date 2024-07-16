@@ -40,17 +40,22 @@ const writeXlFromData = (fileName, subData) => {
   });
 };
 
-const getLogXl = (logData) => {
+const writeXlFromLogInfo = (fileName, logInfo) => {
   return new Promise((resolve) => {
     const wb = utils.book_new();
-    // data is a array
-    {
-      const ws = utils.json_to_sheet(data);
-      utils.book_append_sheet(wb, ws, key);
+    for (let team of Object.keys(logInfo)) {
+      let writeData = [];
+      for (let student of Object.keys(logInfo[team].orderLog)) {
+        let tmp = {  };
+        tmp[student] = logInfo[team].orderLog[student]
+        writeData.push(tmp);
+      }
+      const ws = utils.json_to_sheet(writeData);
+      utils.book_append_sheet(wb, ws, team);
     }
     writeFile(wb, fileName);
     resolve();
-  })
-}
+  });
+};
 
-export { readXlOfEachSheet, writeXlFromData };
+export { readXlOfEachSheet, writeXlFromData, writeXlFromLogInfo };

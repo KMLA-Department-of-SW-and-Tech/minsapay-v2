@@ -3,6 +3,7 @@ import { MINSAPAY_BLUE } from "../components/theme-definition";
 import {
   readXlOfEachSheet /* writeXlFromData */,
   writeXlFromData,
+  writeXlFromLogInfo,
 } from "./xlsx-conversion";
 import { developerFirebase } from "./developer-firebase";
 import { useState } from "react";
@@ -148,7 +149,8 @@ export default function DeveloperHome() {
   };
   const onGetTransactionInfoClick = async () => {
     const transactionData = await developerFirebase.getTransactionData(file);
-    console.log(transactionData);
+    await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
+    await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
   }
   return (
     <Wrapper>
