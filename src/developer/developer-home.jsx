@@ -148,6 +148,7 @@ export default function DeveloperHome() {
     navigate("/");
   };
   const onGetTransactionInfoClick = async () => {
+    console.log(file);
     const transactionData = await developerFirebase.getTransactionData(file);
     console.log(transactionData[2]);
     console.log(transactionData[3]);
@@ -157,6 +158,7 @@ export default function DeveloperHome() {
   const onTeamInfoXlUpload = async (e) => {
     setUploadable(false);
     const file = e.target.files[0];
+    setFile(file);
     let xldata = await readXlOfEachSheet(file); // needs fix
      
     e.target.value = ""; // 같은 파일 입력해도 반복 실행 */
