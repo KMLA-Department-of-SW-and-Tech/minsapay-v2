@@ -332,6 +332,7 @@ const developerFirebase = {
     const logData = logSnapshot.data().log;
     logData.forEach(log => {
       if(this.getTeamIDFromTeamName(log.reciever) !== "non-booth") { // receiver is a team
+        console.log(teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.reciever)])
         teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.reciever)].balance += log.amount;
         teamInfoFromLogDatabase[this.getTeamIDFromTeamName(log.reciever)].orderLog[this.getStudentIDFromStudentName(log.sender, studentPairData)].push(log.amount);
       } else if(this.getTeamIDFromTeamName(log.sender) !== "non-booth") { // sender is a team
