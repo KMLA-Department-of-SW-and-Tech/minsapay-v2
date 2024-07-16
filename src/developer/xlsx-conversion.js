@@ -40,4 +40,17 @@ const writeXlFromData = (fileName, subData) => {
   });
 };
 
+const getLogXl = (logData) => {
+  return new Promise((resolve) => {
+    const wb = utils.book_new();
+    // data is a array
+    {
+      const ws = utils.json_to_sheet(data);
+      utils.book_append_sheet(wb, ws, key);
+    }
+    writeFile(wb, fileName);
+    resolve();
+  })
+}
+
 export { readXlOfEachSheet, writeXlFromData };

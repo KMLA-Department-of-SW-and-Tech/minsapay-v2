@@ -147,6 +147,7 @@ export default function DeveloperHome() {
   const onGetLogInfoClick = async () => {
     const logData = await developerFirebase.getLogData();
     console.log(logData);
+    logData.forEach(log => { if(log.type !== "transaction") { console.log(log)} })
   }
   return (
     <Wrapper>

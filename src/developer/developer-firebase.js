@@ -251,6 +251,9 @@ const developerFirebase = {
     const logSnapshot = await getDoc(logRef);
     return logSnapshot.data();
   },
+  organizeLogData() {
+    
+  }
 };
 
 export { developerFirebase };
