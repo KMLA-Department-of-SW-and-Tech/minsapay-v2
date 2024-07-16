@@ -148,10 +148,10 @@ export default function DeveloperHome() {
     navigate("/");
   };
   const onGetTransactionInfoClick = async () => {
-    console.log(file);
+    //console.log(file);
     const transactionData = await developerFirebase.getTransactionData(file);
-    console.log(transactionData[2]);
-    console.log(transactionData[3]);
+    console.log("b", transactionData[2]);
+    console.log("l", transactionData[3]);
     //await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
     //await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
   }
