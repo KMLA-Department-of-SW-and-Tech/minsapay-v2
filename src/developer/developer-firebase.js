@@ -2,6 +2,7 @@ import { doc, setDoc, query, collection, getDocs, getDoc } from "firebase/firest
 import { authentication, database } from "../firebase";
 import cryptoJS from "crypto-js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { readXlOfEachSheet } from "./xlsx-conversion";
 
 const developerFirebase = {
   userData: {},
