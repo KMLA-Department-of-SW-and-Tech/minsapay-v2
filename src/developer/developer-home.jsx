@@ -146,7 +146,7 @@ export default function DeveloperHome() {
   };
   const onGetTransactionInfoClick = async () => {
     const transactionData = await developerFirebase.getTransactionData();
-    
+    console.log(transactionData);
   }
   return (
     <Wrapper>

@@ -273,9 +273,17 @@ const developerFirebase = {
     const q = query(collection(database, "Students"), where("order_history", "!=", "[]"));
     const querySnapshot = await getDocs(q);
     console.log(querySnapshot)
-    querySnapshot.forEach(doc => {if(doc.data().username === "김상원") console.log(doc.data())})
+    querySnapshot.forEach(doc => {
+      const docData = doc.data();
+      const orderHistory = JSON.parse(docData.order_history);
+      orderHistory.forEach(order => {
+        if(order.refund_request !== 1) {
+          teamInfo[order.team_name] += order.price;
+        }
+      })
+    })
 
-
+    return teamInfo;
   }
 };
 
