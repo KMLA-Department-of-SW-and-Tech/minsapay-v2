@@ -251,24 +251,34 @@ const developerFirebase = {
     const logSnapshot = await getDoc(logRef);
     return logSnapshot.data().log;
   }, */
-  async getTransactionData() {
-    const teamInfo = {
-/*       "빈즈니스": { teamID: "beansness", balance: 0, },
-      "족보": { teamID: "jokbo", balance: 0, },
-      "스피넬": { teamID: "spinel29", balance: 0, },
-      "애플파이":  { teamID: "applepie", balance: 0, },
-      "어벤처스": { teamID: "aventures", balance: 0, },
-      "프시케": { teamID: "psyche", balance: 0, },
-      "비이잉": { teamID: "beeing", balance: 0, },
-      "Girlup HSSK": { teamID: "sooyun", balance: 0, },
-      "일루전":  { teamID: "illusion", balance: 0, },
-      "TTL":  { teamID: "ttl", balance: 0, },
-      "경국지화": { teamID: "fuckingwallpainting", balance: 0, },
-      "대취타": { teamID: "daechita", balance: 0, },
-      "문기부": { teamID: "twninmoongi", balance: 0, },
-      "맥두날두": { teamID: "dupjae", balance: 0, },
-      "행정위": { teamID: "minsa", balance: 0, },
-      "죄와벌": { teamID: "crimenp", balance: 0, }, */
+  getTeamIDFromTeamName(teamname) {
+    switch(teamname) {
+      case "빈즈니스": return "beansness";
+      case "족보": return "jokbo";
+      case "스피넬": return "spinel29";
+      case "애플파이 ": return "applepie";
+      case "어벤처스": return "aventures";
+      case "프시케": return "psyche";
+      case "비이잉": return "beeing";
+      case "Girlup HSSK": return "sooyun";
+      case "일루전 ": return "illusion";
+      case "TTL ": return "ttl";
+      case "경국지화": return "fuckingwallpainting";
+      case "대취타": return "daechita";
+      case "문기부": return "twninmoongi";
+      case "맥두날두": return "dupjae";
+      case "행정위": return "minsa";
+      case "죄와벌": return "crimenp";
+      default: "non-booth";
+    }
+  },
+  async readStudentDataFromXlFile(file) {
+    const fileData = await readXlOfEachSheet(file);
+    console.log(fileData);
+  },
+  async getTransactionData(file) {
+    await readStudentDataFromXlFile(file);
+    const teamInfoFromBuyerDatabase = {
       "beansness": { balance: 0, orderLog: {}, },
       "jokbo": { balance: 0, orderLog: {}, },
       "spinel29": { balance: 0, orderLog: {}, },
@@ -287,6 +297,7 @@ const developerFirebase = {
       "crimenp": { balance: 0, orderLog: {}, },
       "kwagibu": { balance: 0, orderLog: {}, },
     }
+    const teamInfoFromLogDatabase = Object.assign({}, teamInfoFromBuyerDatabase);
     let moneySupply = 0;
     const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
@@ -294,28 +305,38 @@ const developerFirebase = {
       const studentData = student.data();
       moneySupply += studentData.balance;
       const orderHistory = JSON.parse(studentData.order_history);
-      for(let team of Object.keys(teamInfo)) {
-        teamInfo[team].orderLog[student.id] = [];
+      for(let team of Object.keys(teamInfoFromBuyerDatabase)) {
+        teamInfoFromBuyerDatabase[team].orderLog[student.id] = [];
+        teamInfoFromLogDatabase[team].orderLog[student.id] = [];
       }
       orderHistory.forEach(order => {
         //console.log(order);
         if(order.refund_request === 0) {
-          teamInfo[order.team_id].balance += order.price;
-          teamInfo[order.team_id].orderLog[student.id].push(order.price)
+          teamInfoFromBuyerDatabase[order.team_id].balance += order.price;
+          teamInfoFromBuyerDatabase[order.team_id].orderLog[student.id].push(order.price)
         } else {
-          teamInfo[order.team_id].orderLog[student.id].push(order.price);
-          teamInfo[order.team_id].orderLog[student.id].push(-order.price);
+          teamInfoFromBuyerDatabase[order.team_id].orderLog[student.id].push(order.price);
+          teamInfoFromBuyerDatabase[order.team_id].orderLog[student.id].push(-order.price);
         }
       })
     })
-    for(let team of Object.keys(teamInfo)) {
-      moneySupply += teamInfo[team].balance;
+    for(let team of Object.keys(teamInfoFromBuyerDatabase)) {
+      moneySupply += teamInfoFromBuyerDatabase[team].balance;
     }
-    /* const logRef = doc(database, "Admin", "log");
+    const logRef = doc(database, "Admin", "log");
     const logSnapshot = await getDoc(logRef);
-    const logData = logSnapshot.data().log; */
+    const logData = logSnapshot.data().log;
+    logData.forEach(log => {
+      if(getTeamIDFromTeamName(log.reciever) !== "non-booth") { // receiver is a team
+        teamInfoFromLogDatabase[getTeamIDFromTeamName(log.reciever)].balance += log.amount;
+        //teamInfoFromLogDatabase[getTeamIDFromTeamName(log.reciever)].orderLog()
+      } else if(getTeamIDFromTeamName(log.sender) !== "non-booth") { // sender is a team
+        teamInfoFromLogDatabase[getTeamIDFromTeamName(log.sender)].balance -= log.amount;
+        //teamInfoFromLogDatabase[getTeamIDFromTeamName(log.reciever)].orderLog()
+      }
+    })
 
-    return [ teamInfo, moneySupply, ];
+    return [ teamInfoFromBuyerDatabase, moneySupply, ];
   }
 };
 

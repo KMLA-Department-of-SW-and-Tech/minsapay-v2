@@ -88,10 +88,12 @@ export default function DeveloperHome() {
   /* const [remainingTime, setRemainingTime] = useState(0);
   const [clickable, setClickable] = useState(true); */
   const [uploadable, setUploadable] = useState(true);
+  const [file, setFile] = useState(null);
   const navigate = useNavigate();
   const onXlUpload = async (e) => {
     setUploadable(false);
     const file = e.target.files[0];
+    setFile(file);
     let xldata = await readXlOfEachSheet(file); // needs fix
     setSubData(developerFirebase.standardizeSubData(xldata));
     console.log(developerFirebase.standardizeSubData(xldata));
@@ -145,7 +147,7 @@ export default function DeveloperHome() {
     navigate("/");
   };
   const onGetTransactionInfoClick = async () => {
-    const transactionData = await developerFirebase.getTransactionData();
+    const transactionData = await developerFirebase.getTransactionData(file);
     console.log(transactionData);
   }
   return (
