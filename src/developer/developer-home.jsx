@@ -149,8 +149,10 @@ export default function DeveloperHome() {
   };
   const onGetTransactionInfoClick = async () => {
     const transactionData = await developerFirebase.getTransactionData(file);
-    await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
-    await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
+    console.log(transactionData[2]);
+    console.log(transactionData[3]);
+    //await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
+    //await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
   }
   return (
     <Wrapper>
