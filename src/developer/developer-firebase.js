@@ -282,7 +282,7 @@ const developerFirebase = {
   },
   async getTransactionData(file) {
     const studentPairData = await this.readStudentDataFromXlFile(file);
-    console.log(this.getStudentIDFromStudentName("조유찬"))
+    console.log(this.getStudentIDFromStudentName("조유찬", studentPairData))
     const teamInfoFromBuyerDatabase = {
       "beansness": { balance: 0, orderLog: {}, },
       "jokbo": { balance: 0, orderLog: {}, },
