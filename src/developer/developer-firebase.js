@@ -364,14 +364,18 @@ const developerFirebase = {
     for(let team of Object.keys(teamInfoFromBuyerDatabase)) {
       for(let student of Object.keys(teamInfoFromBuyerDatabase[team].orderLog)) {
         if(teamInfoFromBuyerDatabase[team].orderLog[student].length !== 0) {
-          resultTeamInfoFromBuyerDatabase[team].orderLog[student] = teamInfoFromBuyerDatabase[team].orderLog[student];
+          let sum = 0;
+          teamInfoFromBuyerDatabase[team].orderLog[student].forEach(v => sum += v);
+          resultTeamInfoFromBuyerDatabase[team].orderLog[student] = sum;
         }
       }
     }
     for(let team of Object.keys(teamInfoFromLogDatabase)) {
       for(let student of Object.keys(teamInfoFromLogDatabase[team].orderLog)) {
         if(teamInfoFromLogDatabase[team].orderLog[student].length !== 0) {
-          resultTeamInfoFromLogDatabase[team].orderLog[student] = teamInfoFromLogDatabase[team].orderLog[student];
+          let sum = 0;
+          teamInfoFromLogDatabase[team].orderLog[student].forEach(v => sum += v);
+          resultTeamInfoFromLogDatabase[team].orderLog[student] = sum;
         }
       }
     }
