@@ -169,10 +169,10 @@ export default function DeveloperHome() {
         Get Transaction Info
       </DatabaseInfoButton>
       <DatabaseInfoButton htmlFor="xl-submit">
-        {uploadable ? "Upload Database Info" : "Uploading"}
+        {uploadable ? "Upload Team Info" : "Uploading"}
       </DatabaseInfoButton>
       <input
-        onChange={uploadable ? onXlUpload : null}
+        onChange={uploadable ? onTeamInfoXlUpload : null}
         type="file"
         accept=".xls, .xlsx"
         required
@@ -180,10 +180,10 @@ export default function DeveloperHome() {
         style={{ display: "none" }}
       />
       <DatabaseInfoButton htmlFor="xl-submit">
-        {uploadable ? "Upload Team Info" : "Uploading"}
+        {uploadable ? "Upload Database Info" : "Uploading"}
       </DatabaseInfoButton>
       <input
-        onChange={uploadable ? onTeamInfoXlUpload : null}
+        onChange={uploadable ? onXlUpload : null}
         type="file"
         accept=".xls, .xlsx"
         required
