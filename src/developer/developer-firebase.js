@@ -405,8 +405,13 @@ const developerFirebase = {
       })
     })
     return moneySupply;
+  },
+  async readLog() {
+    const logRef = doc(database, "Admin", "log");
+    const logSnapshot = await getDoc(logRef);
+    const logData = logSnapshot.data().log;
+    console.log(logData.filter(val => val.reciever === "moderator"));
   }
-
 };
 
 export { developerFirebase };
