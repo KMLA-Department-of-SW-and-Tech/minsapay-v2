@@ -285,7 +285,7 @@ const developerFirebase = {
       "dupjae": { balance: 0 },
       "minsa": { balance: 0 },
       "crimenp": { balance: 0 },
-
+      "kwagibu": { balance: 0 },
     }
     const q = query(collection(database, "Students"), where("order_history", "!=", "[]"));
     const querySnapshot = await getDocs(q);
