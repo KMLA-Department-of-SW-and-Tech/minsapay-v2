@@ -96,8 +96,8 @@ export default function DeveloperHome() {
     const file = e.target.files[0];
     setFile(file);
     let xldata = await readXlOfEachSheet(file); // needs fix
-    setSubData(developerFirebase.standardizeSubData(xldata));
-    console.log(developerFirebase.standardizeSubData(xldata));
+    //setSubData(developerFirebase.standardizeSubData(xldata));
+    //console.log(developerFirebase.standardizeSubData(xldata));
     e.target.value = ""; // 같은 파일 입력해도 반복 실행 */
     setUploadable(true);
   };
