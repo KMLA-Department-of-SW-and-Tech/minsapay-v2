@@ -1,3 +1,4 @@
+/* eslint-disable */
 import styled from "styled-components";
 import { MINSAPAY_BLUE } from "../components/theme-definition";
 import {
@@ -8,6 +9,7 @@ import { developerFirebase } from "./developer-firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUtils } from "../features/login-feature";
+// done
 
 const Wrapper = styled.div`
   width: 100%;
@@ -158,8 +160,6 @@ export default function DeveloperHome() {
     // await developerFirebase.readLog();
     const data = await developerFirebase.getTransactionData();
     console.log(data);
-
-
   };
   const onTeamInfoXlUpload = async (e) => {
     setUploadable(false);
