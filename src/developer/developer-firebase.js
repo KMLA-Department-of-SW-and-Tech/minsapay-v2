@@ -306,8 +306,15 @@ const developerFirebase = {
       .user_id;
   },
   async getTransactionData(/* file */) {
+    let result = "";
+    const q = query(collection(database, "Students"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      console.log(doc)
+    })
+
     /* const studentPairData = await this.readStudentDataFromXlFile(file); */
-    const teamInfoFromBuyerDatabase = {
+ /*    const teamInfoFromBuyerDatabase = {
       beansness: { balance: 0, orderLog: {} },
       jokbo: { balance: 0, orderLog: {} },
       spinel29: { balance: 0, orderLog: {} },
@@ -325,9 +332,9 @@ const developerFirebase = {
       minsa: { balance: 0, orderLog: {} },
       crimenp: { balance: 0, orderLog: {} },
       kwagibu: { balance: 0, orderLog: {} },
-    };
+    }; */
     /* const teamInfoFromLogDatabase = JSON.parse(JSON.stringify(({}, teamInfoFromBuyerDatabase))); */
-    let moneySupply = 0;
+/*     let moneySupply = 0;
     const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((student) => {
@@ -336,10 +343,8 @@ const developerFirebase = {
       const orderHistory = JSON.parse(studentData.order_history);
       for (let team of Object.keys(teamInfoFromBuyerDatabase)) {
         teamInfoFromBuyerDatabase[team].orderLog[student.id] = [];
-        /* teamInfoFromLogDatabase[team].orderLog[student.id] = []; */
       }
       orderHistory.forEach((order) => {
-        //console.log(order);
         if (order.refund_request === 0) {
           teamInfoFromBuyerDatabase[order.team_id].balance += order.price;
           teamInfoFromBuyerDatabase[order.team_id].orderLog[student.id].push(
@@ -357,7 +362,7 @@ const developerFirebase = {
     });
     for (let team of Object.keys(teamInfoFromBuyerDatabase)) {
       moneySupply += teamInfoFromBuyerDatabase[team].balance;
-    }
+    } */
     /* const logRef = doc(database, "Admin", "log");
     const logSnapshot = await getDoc(logRef);
     const logData = logSnapshot.data().log;
