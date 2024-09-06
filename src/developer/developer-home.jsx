@@ -147,15 +147,15 @@ export default function DeveloperHome() {
     navigate("/");
   };
   const onGetTransactionInfoClick = async () => {
-    console.log(file);
-    const transactionData =
-      await developerFirebase.getTransactionData(/* file */);
-    console.log(transactionData);
-    //const tmp = await developerFirebase.buyerValid();
-    //console.log(tmp);
-    //await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
-    //await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
-    await developerFirebase.readLog();
+    // console.log(file);
+    // const transactionData =
+    //   await developerFirebase.getTransactionData(/* file */);
+    // console.log(transactionData);
+    // //const tmp = await developerFirebase.buyerValid();
+    // //console.log(tmp);
+    // //await writeXlFromLogInfo("team_info_from_buyer_firebase.xlsx", transactionData[0]);
+    // //await writeXlFromLogInfo("team_info_from_log_firebase.xlsx", transactionData[1]);
+    // await developerFirebase.readLog();
   };
   const onTeamInfoXlUpload = async (e) => {
     setUploadable(false);
@@ -172,7 +172,7 @@ export default function DeveloperHome() {
       <DatabaseInfoButton onClick={onGetTransactionInfoClick}>
         Get Transaction Info
       </DatabaseInfoButton>
-      <DatabaseInfoButton htmlFor="xl-submit">
+      {/* <DatabaseInfoButton htmlFor="xl-submit">
         {uploadable ? "Upload Team Info" : "Uploading"}
       </DatabaseInfoButton>
       <input
@@ -196,7 +196,7 @@ export default function DeveloperHome() {
       />
       <SubmitDatabaseInfoButton onClick={uploadable ? onSubmitDataClick : null}>
         {uploadable ? "Submit Database Info" : "Uploading"}
-      </SubmitDatabaseInfoButton>
+      </SubmitDatabaseInfoButton> */}
       <Logout onClick={onLogoutClick}>Log Out</Logout>
     </Wrapper>
   );
