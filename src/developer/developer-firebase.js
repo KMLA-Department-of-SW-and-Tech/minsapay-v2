@@ -310,11 +310,19 @@ const developerFirebase = {
     const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      console.log(doc)
-    })
+      result += doc.id;
+      result += "\t";
+      const data = doc.data();
+      result += data.username;
+      result += "\t";
 
+      result += String(data.balance);
+      result += "\n";
+    });
+
+    return result;
     /* const studentPairData = await this.readStudentDataFromXlFile(file); */
- /*    const teamInfoFromBuyerDatabase = {
+    /*    const teamInfoFromBuyerDatabase = {
       beansness: { balance: 0, orderLog: {} },
       jokbo: { balance: 0, orderLog: {} },
       spinel29: { balance: 0, orderLog: {} },
@@ -334,7 +342,7 @@ const developerFirebase = {
       kwagibu: { balance: 0, orderLog: {} },
     }; */
     /* const teamInfoFromLogDatabase = JSON.parse(JSON.stringify(({}, teamInfoFromBuyerDatabase))); */
-/*     let moneySupply = 0;
+    /*     let moneySupply = 0;
     const q = query(collection(database, "Students"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((student) => {
@@ -412,15 +420,15 @@ const developerFirebase = {
       }
     } */
 
-    for (let team of Object.keys(teamInfoFromBuyerDatabase)) {
-      for (let student of Object.keys(
-        teamInfoFromBuyerDatabase[team].orderLog,
-      )) {
-        teamInfoFromBuyerDatabase[team].orderLog[student].sort();
-        /* teamInfoFromLogDatabase[team].orderLog[student].sort(); */
-      }
-    }
-    return [teamInfoFromBuyerDatabase, moneySupply];
+    // for (let team of Object.keys(teamInfoFromBuyerDatabase)) {
+    //   for (let student of Object.keys(
+    //     teamInfoFromBuyerDatabase[team].orderLog,
+    //   )) {
+    //     teamInfoFromBuyerDatabase[team].orderLog[student].sort();
+    //     /* teamInfoFromLogDatabase[team].orderLog[student].sort(); */
+    //   }
+    // }
+    // return [teamInfoFromBuyerDatabase, moneySupply];
   },
   getBalances(teamInfo) {
     let result = {};
